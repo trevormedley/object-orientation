@@ -186,13 +186,16 @@ console.log(cat1.name);
 
 class Wizard {
   constructor (name, age, favoriteSpell) {
-    this.castSpell = castSpell;
     this.name = name;
-    function castSpell() {
-      console.log(`${name} has cast ${favoriteSpell}`)
-    }
+    this.age = age;
+    this.favoriteSpell = favoriteSpell;
+  }
+  
+  castSpell() {
+      console.log(`${this.name} has cast ${this.favoriteSpell}`)
   }
 }
+
 
 let wizard1 = new Wizard('John', 123, 'Levitate')
 
@@ -222,8 +225,25 @@ wizard1.castSpell()
     to be newPrice.
 */
 
-//Code Here
+class Phone {
+  constructor(brand, model, storage, color, price) {
+    this.brand = brand;
+    this.model = model;
+    this.storage = storage;
+    this.color = color;
+    this.price = price;
+    this.sold = false
+  }
 
+  sell() {
+    this.sold = true
+    console.log(`${this.brand} ${this.model} has been sold.`)
+  }
+
+  changePrice(newPrice) {
+    this.price = newPrice
+  }
+}
   
 /*
     Next make three new phone instances using your class.
@@ -235,7 +255,9 @@ wizard1.castSpell()
     - price: number
 */
 
-//Code Here
+let phone1 = new Phone('Apple', 'iPhone', 128, 'Space Grey', 1000)
+let phone2 = new Phone('Samsung', 'Galaxy S21', 256, 'Silver', 1200)
+let phone3 = new Phone('Evo', 'Android', 128, 'Red', 800)
 
 /* 
   Call the changePrice function on one of your phones, 
@@ -246,6 +268,9 @@ wizard1.castSpell()
 
 //Code Here 
 
+phone1.changePrice(900)
+
+console.log(phone1);
 
 /*
   Now call the sell method on one of your other phone objects
@@ -253,7 +278,9 @@ wizard1.castSpell()
   Print the value of that phone's sell property to make sure it's been changed to true
 */
 
-//Code Here 
+phone3.sell()
+
+console.log(phone3.sold);
 
 
 //////////////////////////// PROBLEM 15 ////////////////////////////
@@ -272,7 +299,8 @@ const colors = {
 }
 //do not edit this object
 
-//Code Here 
+let colorsCopy = {...colors}
+console.log(colorsCopy.background);
 
 
 
@@ -300,8 +328,8 @@ const shippingInfo = {
 }
 //do not edit the objects above
 
-//Code Here
-
+helensInfo = {...contactInfo, ...shippingInfo}
+console.log(helensInfo);
 
 //Print helensInfo to see what it looks like, there should be no repeating properties.
 
@@ -318,15 +346,25 @@ const shippingInfo = {
   And finally, print the value of the mileage.
 */
 
-//Code Here 
-
+class Vehicle {
+  constructor (capacity, color, mileage){
+  this.capacity = capacity;
+  this.color = color;
+  this.mileage = mileage;
+  }
+  move(miles) {
+    let newMileage = (miles + this.mileage)
+    console.log(newMileage);
+  }
+}
 
 /*
   Create a vehicle using your new class and save it to a variable called myFirstVehicle
 */
 
-//Code Here
+let myFirstVehicle = new Vehicle(5, 'black', 79000);
 
+myFirstVehicle.move(111);
 
 /* 
   Now we'll create a class that's based off of the vehicle class. 
@@ -337,18 +375,25 @@ const shippingInfo = {
   Note: You might need to go research 'how to extend a class'. 
 */
 
-//Code Here
+class Motorcycle extends Vehicle {
+  constructor (capacity, color, mileage, make, isCool) {
+    super(capacity, color, mileage)
+    this.make = make;
+    this.isCool = isCool;
+  }
+  
+}
 
 /*
   Create a Motorcycle using your new class and save it to a variable called myFirstMotorcycle
 */
 
-//Code Here 
+let myFirstMotorcycle = new Motorcycle(2, 'Blue', 10000, 'Honda', true);
 
 /*
   Call the move function on myFirstMotorcycle (don't forget the parameter)
 */
-
+myFirstVehicle.move(345);
 /*
   Let's make another class based off of Vehicle. 
 
@@ -364,7 +409,24 @@ const shippingInfo = {
   This function should set isSeaworthy to be true
 */
 
-//Code Here
+class Boat extends Vehicle {
+  constructor (capacity, color, mileage, name, type, isSeaworthy) {
+    super(capacity, color, mileage)
+    this.name = name;
+    this.type = type;
+    this.isSeaworthy = isSeaworthy;
+  }
+  checkSeaworthiness() {
+    if (this.isSeaworthy) {
+      console.log(`The ${this.color} ${this.type} ${this.name} is seaworthy!`)
+    } else {
+      console.log(`You need to get your ${this.type} in shape!`)
+    }
+  }
+  performanceMaintenance() {
+    this.isSeaworthy = true
+  }
+}
 
 
 /*
@@ -372,22 +434,22 @@ const shippingInfo = {
   properties except isSeaworthy -- make that one false. Call your variable myFirstBoat.
 */
 
-//Code Here
+let myFirstBoat = new Boat(8, 'White', 0, 'S.S. Tipsy', 'Pontoon', false)
 
 /*
   Call the checkSeaworthiness method on your new boat
 */
 
-//Code Here
+myFirstBoat.checkSeaworthiness();
 
 /*
   Now run the performMaintenance method on your boat
 */
 
-//Code Here 
+myFirstBoat.performanceMaintenance();
 
 /*
   Check the seaworthiness once more (you should be ready for the water!)
 */
 
-//Code Here
+myFirstBoat.checkSeaworthiness();
