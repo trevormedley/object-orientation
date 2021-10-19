@@ -53,6 +53,7 @@ let favoriteThings = {
 */
 
 favoriteThings.car = 'Jeep'
+favoriteThings.show = 'Seinfeld'
 
 /*
   Now use bracket or dot notation to change the value of the food key in your favoriteThings object to be 'Chicken Nuggets'
@@ -78,7 +79,9 @@ var carDetails = {
   Use object destructuring to save the property values from the object carDetails into new variables. 
 */
 
-let {color, make, model, year} = carDetails ;
+let {color, make, model, year} = carDetails
+
+console.log(color, make, model, year);
 
 //////////////////////////// PROBLEM 7 ////////////////////////////
 
@@ -90,12 +93,11 @@ let {color, make, model, year} = carDetails ;
 
 function greeting( obj ) {
   let {firstName, lastName, title} = obj ;
-  
+
   // Do not edit the code below.
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
   // Do not edit the code above.
 }
-
 
 
 //////////////////////////// PROBLEM 8 ////////////////////////////
@@ -183,18 +185,18 @@ console.log(cat1.name);
 */
 
 class Wizard {
-  constructor (name, age, favoriteSpell){
+  constructor (name, age, favoriteSpell) {
+    this.castSpell = castSpell;
     this.name = name;
-    this.age = age;
-    this.favoriteSpell = favoriteSpell;
-  }
-
-    castSpell(name) {
-    return `${name} has cast ${favoriteSpell}`
+    function castSpell() {
+      console.log(`${name} has cast ${favoriteSpell}`)
+    }
   }
 }
 
-let wizard1 = new Wizard('Hagrid', 78, 'Liviosa');
+let wizard1 = new Wizard('John', 123, 'Levitate')
+
+wizard1.castSpell()
 
 
 //////////////////////////// PROBLEM 14 ////////////////////////////
